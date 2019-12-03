@@ -22,10 +22,6 @@
   <meta name="msapplication-config" content="{{ url_for(theme.favicon.ms_browserconfig) }}">
 {%- endif %}
 
-{%- if rss %}
-  <link rel="alternate" href="{{ url_for(rss) }}" title="{{ title }}" type="application/atom+xml">
-{%- endif %}
-
 {%- if theme.disable_baidu_transformation %}
   <meta http-equiv="Cache-Control" content="no-transform">
   <meta http-equiv="Cache-Control" content="no-siteapp">
@@ -66,6 +62,7 @@
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
+    hostname: new URL('{{ config.url }}').hostname,
     root: '{{ config.root }}',
     scheme: '{{ theme.scheme }}',
     version: '{{ next_version }}',
@@ -87,7 +84,6 @@
     },
     localsearch: {{ theme.local_search | json }},
     path: '{{ config.search.path }}',
-    motion: {{ theme.motion | json }},
-    sidebarPadding: 40
+    motion: {{ theme.motion | json }}
   };
 </script>
